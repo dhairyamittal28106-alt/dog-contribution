@@ -1,13 +1,17 @@
 name: Generate Dog Contribution Animation
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 */12 * * *"
-  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
@@ -19,7 +23,7 @@ jobs:
           outputs: |
             dist/dog.svg
 
-      - name: Push Dog SVG to Repo
+      - name: Commit and Push
         uses: EndBug/add-and-commit@v9
         with:
           message: "Update dog contribution animation"
