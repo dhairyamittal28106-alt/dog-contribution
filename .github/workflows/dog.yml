@@ -9,10 +9,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: Platane/snk@v3
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Generate Dog SVG
+        uses: Platane/snk@v3
         with:
           github_user_name: dhairyamittal28106-alt
           outputs: |
             dist/dog.svg
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push Dog SVG to Repo
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "Update dog contribution animation"
+          add: "dist/dog.svg"
