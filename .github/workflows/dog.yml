@@ -16,15 +16,15 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Generate Dog SVG
+      - name: Generate Brown Pixel Dog SVG
         uses: Platane/snk@v3
         with:
           github_user_name: dhairyamittal28106-alt
           outputs: |
-            dist/dog.svg
+            dist/dog.svg?palette=github-dark&color_snake=#8B4513&snake_pixel_size=12
 
       - name: Commit and Push
         uses: EndBug/add-and-commit@v9
         with:
-          message: "Update dog contribution animation"
+          message: "Update brown pixel dog contribution animation"
           add: "dist/dog.svg"
